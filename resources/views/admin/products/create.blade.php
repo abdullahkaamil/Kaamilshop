@@ -7,20 +7,11 @@
 
     <div class="row">
         <div class="col-lg-10 col-md-10">
+            @include('admin.layouts.message')
             <div class="card">
                 <div class="header">
                     <h4 class="title">Add Product</h4>
                 </div>
-
-
-                @if($errors->any())
-                    <ul>
-                        @foreach($errors->all() as  $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                @endif
-
                 <div class="content">
                     {!! Form::open(['url' => 'products', 'files' => 'true']) !!}
 
