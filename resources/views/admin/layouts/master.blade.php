@@ -16,6 +16,7 @@
     {{  Html::style('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css') }}
     {{  Html::style('https://fonts.googleapis.com/css?family=Muli:400,300') }}
     {{  Html::style('assets/css/themify-icons.css') }}
+    {{  Html::style('assets/css/style.css') }}
 
 
 </head>
@@ -95,5 +96,6 @@
 </body>
 {{Html::script('assets/js/jquery-1.10.2.js')}}
 {{Html::script('assets/js/bootstrap.min.js')}}
+{{Html::script('assets/js/script.js')}}
 
 </html>

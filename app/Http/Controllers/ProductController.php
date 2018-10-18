@@ -9,7 +9,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-
+        $products = Product::all();
+return view('admin.products.index', compact('products'));
     }
 
     public function create()
@@ -50,5 +51,12 @@ class ProductController extends Controller
         return redirect('products/create');
 
 
+    }
+    //delete the product  function
+    public function destroy($id){
+        Product::destroy($id);
+// massage for deleted
+        session()->flash('msg','Product has been Deleted');
+    return redirect('/products');
     }
 }
