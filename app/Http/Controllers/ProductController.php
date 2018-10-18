@@ -59,4 +59,49 @@ return view('admin.products.index', compact('products'));
         session()->flash('msg','Product has been Deleted');
     return redirect('/products');
     }
+
+
+    public function edit($id){
+        $product = Product::find($id);
+        return view('admin.products.edit',compact('product'));
+
+    }
+
+    public function update(Request $request, $id){
+// find the prodcut
+        $product = Product::find($id);
+
+        // validate the form
+$request->validate([
+    'name' => 'required',
+    'price'  => 'required',
+    'description'  => 'required',
+    ]);
+        //check if there is any image
+if($request->hasFile('image')){
+    //check if there is old image
+    if (file_exists(public_path('upload/'). $product->image)){
+        unlink(public_path('upload/').$product->image);
+    }
+    // upload the new image
+    $image = $request->image;
+    $image->move('upload',$image->getClientOriginalName());
+    $product->image = $request->image->getClientOriginalName();
+}
+
+        //updating the product
+        $product->update([
+           'name' => $request->name,
+           'price' => $request->price,
+           'description' => $request->description,
+            'image' => $product->image,
+        ]);
+
+        //store a masssafe in session
+
+        $request->session()->flash('msg','Product has been Updated');
+        // redirect
+        return redirect('/products');
+
+    }
 }

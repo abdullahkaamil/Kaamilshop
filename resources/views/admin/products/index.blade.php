@@ -39,6 +39,11 @@
 
                                 {{Form::open(['route' => ['products.destroy', $product->id], 'method' =>'DELETE'])  }}
 {{  Form::button('<span class="fa fa-trash"></span>', [ 'type'=> 'submit', 'class'=> ' btn btn-danger btn-sm', 'onclick'=>'return confirm("Are You Sure ?")']) }}
+                                {{  link_to_route('products.edit','', $product->id, ['class' => 'btn btn-info btn-sm ti-pencil']) }}
+                                {{  link_to_route('products.show','', $product->id, ['class' => 'btn btn-primary btn-sm ti-list']) }}
+
+
+
                                 {{Form::open()}}
                                {{-- <button class="btn btn-sm btn-info ti-pencil-alt" title="Edit"></button>
                                 <button class="btn btn-sm btn-danger ti-trash" title="Delete"></button>
