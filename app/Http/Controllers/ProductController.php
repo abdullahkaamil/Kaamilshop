@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class ProductController extends Controller
 {
@@ -15,8 +17,8 @@ return view('admin.products.index', compact('products'));
 
     public function create()
     {
-
-        return view('admin.products.create');
+$products = new Product();
+        return view('admin.products.create', compact('products'));
     }
 
     public function store(Request $request)
@@ -59,6 +61,13 @@ return view('admin.products.index', compact('products'));
         session()->flash('msg','Product has been Deleted');
     return redirect('/products');
     }
+
+    //Details page
+    public function show($id){
+        $product = Product::find($id);
+        return view('admin.products.details' ,compact('product') );
+    }
+
 
 
     public function edit($id){

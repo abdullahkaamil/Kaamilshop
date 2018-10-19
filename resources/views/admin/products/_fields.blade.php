@@ -1,16 +1,16 @@
 <div class="form-group  {{ $errors->has('name') ? 'has-error' : '' }}">
     {{  Form::label('product_name', 'Product Name:')   }}
-    {{ Form::text('name',$product->name,['class'=>'form-control border-input','placeholder'=>'Macbook pro']) }}
+    {{ Form::text('name',$products->name,['class'=>'form-control border-input','placeholder'=>'Macbook pro']) }}
 </div>
 
 <div class="form-group {{ $errors->has('price') ? 'has-error' : '' }}">
     {{  Form::label('price', ' Price:')   }}
-    {{ Form::text('price',$product->price,['class'=>'form-control border-input','placeholder'=>'$2500']) }}
+    {{ Form::text('price',$products->price,['class'=>'form-control border-input','placeholder'=>'$2500']) }}
 </div>
 
 <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
     {{  Form::label('description', ' Description:')   }}
-    {{ Form::textarea('description',$product->description,['class'=>'form-control border-input','placeholder'=>'Product Description']) }}
+    {{ Form::textarea('description',$products->description,['class'=>'form-control border-input','placeholder'=>'Product Description']) }}
 </div>
 
 <div class="form-group {{ $errors->has('image') ? 'has-error' : ''}}">
