@@ -5,4 +5,7 @@ Route::get('/','DashboardController@index');
 Route::resource('/products','ProductController');
 // orders
 
-route::resource('/orders','OrderController');
+Route::resource('/orders','OrderController');
+Route::get('/confirm/{id}','OrderController@confirm')->name('order.confirm');
+Route::get('/pending/{id}','OrderController@pending')->name('order.pending');
+
