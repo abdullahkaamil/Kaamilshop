@@ -71,8 +71,8 @@ $products = new Product();
 
 
     public function edit($id){
-        $product = Product::find($id);
-        return view('admin.products.edit',compact('product'));
+        $products = Product::find($id);
+        return view('admin.products.edit',compact('products'));
 
     }
 

@@ -13,7 +13,7 @@
     {{  Html::style('assets/css/bootstrap.min.css') }}
     {{  Html::style('assets/css/animate.min.css') }}
     {{  Html::style('assets/css/paper-dashboard.css') }}
-    {{  Html::style('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css') }}
+    {{  Html::style('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}
     {{  Html::style('https://fonts.googleapis.com/css?family=Muli:400,300') }}
     {{  Html::style('assets/css/themify-icons.css') }}
     {{  Html::style('assets/css/style.css') }}
@@ -82,7 +82,7 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="copyright pull-right">
+                <div class="copyright pull-right" id="date">
                     &copy;
                     <script>document.write(new Date().getFullYear())</script>
                     , Developed by <a href="">Abdullah Kaamil</a>
