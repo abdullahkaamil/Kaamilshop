@@ -73,7 +73,7 @@
                         </tr>
                         <tr>
                             <th>Registered At</th>
-                            <td>{{ $order->user->created_at}}</td>
+                            <td>{{ $order->user->created_at->diffForHumans()}}</td>
                         </tr>
 
                         </thead>
