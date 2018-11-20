@@ -1,29 +1,26 @@
-@extends('admin.layouts.master')
-
-@section('page')
-    Order Details
-@endsection
-
+@extends('Front.layouts.master')
 
 @section('content')
+    <h2>User Order Details Page</h2>
 
+    <hr>
     <div class="row">
 
         <div class="col-md-12">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">Order Details</h4>
-                    <p class="category">Order details</p>
-                </div>
+
+
                 <div class="content table-responsive table-full-width">
-                    <table class="table table-striped">
+                    <table class="table table-bordered table-striped">
                         <thead>
+                        <tr>
+                            <th colspan="7"> Order Details</th>
+                        </tr>
                         <tr>
                             <th>ID</th>
                             <th>Date</th>
                             <th>Address</th>
                             <th>Status</th>
-                            <th>Action</th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -33,31 +30,24 @@
                             <td>{{ $order->address }}</td>
                             <td>
                                 @if ($order->status)
-                                    <span class="label label-success">Confirmed</span>
+                                    <span class="badge badge-success">Confirmed</span>
                                 @else
-                                    <span class="label label-warning">Pending</span>
+                                    <span class="badge badge-warning">Pending</span>
                                 @endif
                             </td>
-                            <td>
-                                @if ($order->status)
-                                    {{ link_to_route('order.pending','Pending', $order->id, ['class'=>'btn btn-warning btn-sm']) }}
-                                @else
-                                    {{ link_to_route('order.confirm','Confirm', $order->id, ['class'=>'btn btn-success btn-sm']) }}
-                                @endif  </td>
+
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
+
         <div class="col-md-6">
-            <div class="card">
-                <div class="header">
+
                     <h4 class="title">User Details</h4>
-                    <p class="category">User Details</p>
-                </div>
+<hr>
                 <div class="content table-responsive table-full-width">
-                    <table class="table table-striped">
+                    <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -78,17 +68,15 @@
 
                         </thead>
                     </table>
-                </div>
+
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="header">
+        <div class="col-md-6">
+
                     <h4 class="title">Product Details</h4>
-                    <p class="category">Product Details</p>
-                </div>
+<hr>
                 <div class="content table-responsive table-full-width">
-                    <table class="table table-striped">
+                    <table class="table table-bordered ">
                         <tr>
                             <th>Order ID</th>
                             <th>Product Name</th>
@@ -130,7 +118,11 @@
                                 @foreach ($order->products as $product)
                                     <table class="table">
                                         <tr>
-                                            <td><img src="{{ url('upload') . '/' . $product->image }}" alt="" style="width: 2em"></td>
+                                            <td>
+
+                                                <img src="{{ url('upload/') . '/' . $product->image }}"  alt=""  class="img-thumbnail" style="width: 2em">
+
+                                            </td>
                                         </tr>
                                     </table>
                                 @endforeach
@@ -138,12 +130,8 @@
                         </tr>
 
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
-
-    <a href="{{ url('/admin/orders') }}" class="btn btn-success">Back to Orders</a>
-
-@endsection
+    @endsection
