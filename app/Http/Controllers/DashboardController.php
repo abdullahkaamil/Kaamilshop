@@ -9,11 +9,17 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
+
     public function index(){
         $product = new Product();
         $order = new Order();
         $user = new User();
 
-        return view('admin.dashboard', compact('product', 'order', 'user'));
+        return view('admin.dashboard', compact('product','order', 'user'));
     }
 }

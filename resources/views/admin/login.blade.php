@@ -9,7 +9,7 @@
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
-//
+
 
     {{  Html::style('assets/css/bootstrap.min.css') }}
     {{  Html::style('assets/css/animate.min.css') }}
@@ -40,18 +40,28 @@
                     <div class="panel-heading">
                         <h3 class="panel-title"><strong>Sign In</strong></h3>
                     </div>
+
                     <div class="panel-body">
+
                         @if ($errors->any())
-                            <div class=" alert alert-danger">
+                            <div class="alert alert-danger">
                                 <ul>
                                     @foreach($errors->all() as $error)
-                                        <li>{{$error}}</li>
+                                        <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
                             </div>
                         @endif
+
+                        @if ( session()->has('msg') )
+                            <div class="alert alert-success">{{ session()->get('msg') }}</div>
+                        @endif
+
+
                         <form method="post" action="/admin/login">
+
                             @csrf
+
                             <div class="form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" name="email" id="email" placeholder="Email"

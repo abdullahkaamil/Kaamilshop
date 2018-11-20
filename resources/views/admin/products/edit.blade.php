@@ -12,7 +12,7 @@
                     <h4 class="title">Edit Product</h4>
                 </div>
                 <div class="content">
-                    {!! Form::open(['url' => ['products', $products->id], 'files' => 'true','method'=>'put']) !!}
+                    {!! Form::open(['url' => ['admin/products', $products->id], 'files' => 'true','method'=>'put']) !!}
                     <div class="row">
                         <div class="col-md-12">
                             @include('admin.products._fields')

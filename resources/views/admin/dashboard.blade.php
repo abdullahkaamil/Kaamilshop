@@ -49,7 +49,7 @@
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <a href="{{ url('products') }}">
+                            <a href="{{ url('admin/products') }}">
                             <i class="ti-panel"></i> Details</a>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <a href="{{ url('/orders') }}">
+                            <a href="{{ url('admin/orders') }}">
                             <i class="ti-panel"></i> Details</a>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <a href="{{ url('/users') }}">
+                            <a href="{{ url('admin/users') }}">
                             <i class="ti-panel"></i> Details</a>
                         </div>
                     </div>

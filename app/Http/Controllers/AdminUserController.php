@@ -7,32 +7,49 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminUserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest:admin')->except('logout');
+    }
+
     //
-    public function index(){
+    public function index()
+    {
         return view('admin.login');
     }
-public function store(Request $request){
 
-//validate the use
-$request->validate([
-   'email'=> 'required|email',
-   'password'=>'required'
-]);
+    public function store(Request $request)
+    {
 
-    //log the user
-$credentials =$request->only('email','password');
+//validate the user
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-if (! Auth::guard('admin')->attempt($credentials)){
-    return back()->withErrors([
-        'message'=>'Wrong email and Password '
-    ]);
-}
+        //log the user
+        $credentials = $request->only('email', 'password');
 
-  //  session message
-session()->flash('msg', 'you have been logged in ');
- //   redirect
-return redirect('admin/');
+        if (!Auth::guard('admin')->attempt($credentials)) {
+            return back()->withErrors([
+                'message' => 'Wrong email and Password '
+            ]);
+        }
 
+        //  session message
+        session()->flash('msg', 'you have been logged in ');
+        //   redirect
+        return redirect('/admin');
+
+    }
+
+    public function logout()
+    {
+        auth()->guard('admin')->logout();
+
+        session()->flash('msg', 'You have been logged out');
+
+        return redirect('/admin/login');
     }
 
 }

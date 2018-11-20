@@ -12,12 +12,12 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-return view('admin.products.index', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
     public function create()
     {
-$products = new Product();
+        $products = new Product();
         return view('admin.products.create', compact('products'));
     }
 
@@ -50,67 +50,71 @@ $products = new Product();
         $request->session()->flash('msg', 'your product has been added');
 
         //redirect
-        return redirect('products/create');
+        return redirect('admin/products/create');
 
 
     }
+
     //delete the product  function
-    public function destroy($id){
+    public function destroy($id)
+    {
         Product::destroy($id);
 // massage for deleted
-        session()->flash('msg','Product has been Deleted');
-    return redirect('/products');
+        session()->flash('msg', 'Product has been Deleted');
+        return redirect('admin/products');
     }
 
     //Details page
-    public function show($id){
+    public function show($id)
+    {
         $product = Product::find($id);
-        return view('admin.products.details' ,compact('product') );
+        return view('admin.products.details', compact('product'));
     }
 
 
-
-    public function edit($id){
+    public function edit($id)
+    {
         $products = Product::find($id);
-        return view('admin.products.edit',compact('products'));
+        return view('admin.products.edit', compact('products'));
 
     }
 
-    public function update(Request $request, $id){
-// find the prodcut
+    public function update(Request $request, $id)
+    {
+// find the product
         $product = Product::find($id);
 
         // validate the form
-$request->validate([
-    'name' => 'required',
-    'price'  => 'required',
-    'description'  => 'required',
-    ]);
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+        ]);
         //check if there is any image
-if($request->hasFile('image')){
-    //check if there is old image
-    if (file_exists(public_path('upload/'). $product->image)){
-        unlink(public_path('upload/').$product->image);
-    }
-    // upload the new image
-    $image = $request->image;
-    $image->move('upload',$image->getClientOriginalName());
-    $product->image = $request->image->getClientOriginalName();
-}
+        if ($request->hasFile('image')) {
+            //check if there is old image
+            if (file_exists(public_path('upload/') . $product->image)) {
+                unlink(public_path('upload/') . $product->image);
+            }
+            // upload the new image
+            $image = $request->image;
+            $image->move('upload', $image->getClientOriginalName());
+            $product->image = $request->image->getClientOriginalName();
+        }
 
         //updating the product
         $product->update([
-           'name' => $request->name,
-           'price' => $request->price,
-           'description' => $request->description,
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
             'image' => $product->image,
         ]);
 
-        //store a masssafe in session
+        //store a massage in session
 
-        $request->session()->flash('msg','Product has been Updated');
+        $request->session()->flash('msg', 'Product has been Updated');
         // redirect
-        return redirect('/products');
+        return redirect('admin/products');
 
     }
 }
