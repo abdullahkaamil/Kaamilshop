@@ -35,3 +35,23 @@ Route::prefix('admin')->group(function() {
   *
   */
 Route::get('/','Front\HomeController@index');
+
+// user Registration
+
+
+Route::get('/user/register','Front\RegistrationController@index');
+Route::post('/user/register','Front\RegistrationController@store');
+
+//user login
+
+Route::get('/user/login','Front\SessionsController@index');
+Route::post('/user/login','Front\SessionsController@store');
+
+//user logout
+Route::get('/user/logout','Front\SessionsController@logout');
+
+
+
+Route::get('/user/profile', function (){
+    return 'welcome user ';
+});
