@@ -13,39 +13,39 @@ class SessionsController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function index(){
+    public function index() {
         return view('front.sessions.index');
     }
 
     public function store(Request $request){
 
-//validate user
-
+        // Validate the user
         $rules = [
             'email' => 'required|email',
             'password' => 'required'
         ];
-
         $request->validate($rules);
 
-
-        //check if user exists
-        $data = request(['email','password']);
-        if ( ! auth()->attempt($data)){
+        // Check if exists
+        $data= request(['email','password']);
+        if ( ! auth()->attempt($data) ) {
             return back()->withErrors([
-                'massage' => 'Wrong Password Or Email try again '
+                'message' => 'Wrong credentials please try again'
             ]);
         }
+
         return redirect('/user/profile');
 
     }
 
-public function logout(){
+    public function logout() {
+
         auth()->logout();
 
+        session()->flash('msg','You have been logged out successfully');
 
-        session()->flash('msg','You have Been logged out successfully');
         return redirect('/user/login');
-}
+
+    }
 
 }

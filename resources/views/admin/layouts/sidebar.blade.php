@@ -2,8 +2,8 @@
 
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="/" class="simple-text">
-                Kaamil's Shop Admin
+            <a href="" class="simple-text">
+                Kaamil Shop Admin
             </a>
         </div>
 
@@ -15,25 +15,25 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/products/create') }}">
+                <a href="{{ url('/admin/products/create') }}">
                     <i class="ti-archive"></i>
                     <p>Add Product</p>
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/products') }}">
+                <a href="{{ url('/admin/products') }}">
                     <i class="ti-view-list-alt"></i>
                     <p>View Products</p>
                 </a>
             </li>
             <li>
-                <a href="{{url('admin/orders')}}">
+                <a href="{{ url('/admin/orders') }}">
                     <i class="ti-calendar"></i>
                     <p>Orders</p>
                 </a>
             </li>
             <li>
-                <a href="{{url ('admin/users')}}">
+                <a href="{{ url('/admin/users') }}">
                     <i class="fa fa-users"></i>
                     <p>Users</p>
                 </a>

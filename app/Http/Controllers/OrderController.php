@@ -7,44 +7,52 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
-    {
+    public function index() {
         $orders = Order::all();
-        return view('admin.orders.index', compact('orders'));
+        $data['Items'] = $orders;
+        return view('admin.orders.index', $data);
+        // return View::make('tasks.index')->with(compact('tasks'));
     }
 
-    public function confirm($id)
-    {
-        //find the order
+
+    public function confirm($id) {
+
+        // Find the order
         $order = Order::find($id);
 
-        //update the order
+        // Update the Order
         $order->update(['status' => 1]);
 
-        //session message
-        session()->flash('msg', 'Order HAS been Confirmed');
+        // Session message
+        session()->flash('msg','Order has been confirmed');
 
-        //redirect the page back
-        return redirect('/admin/orders');
-    }
-
-    public function pending($id)
-    {
-        //find the order
-        $order = Order::find($id);
-        //update the order
-        $order->update(['status' => 0]);
-        //session message
-        session()->flash('msg', 'Order HAS been pending');
-        //redirect the page back
+        // Redirect the page
         return redirect('admin/orders');
+
+
     }
 
-    public function show($id)
-    {
+
+    public function pending($id){
+
+        // Find the order
         $order = Order::find($id);
-        return view('admin.orders.Details', compact('order'));
+
+        // Update the order status
+
+        $order->update(['status' => 0]);
+
+        // Session Message
+        session()->flash('msg','Order has been again into pending');
+
+        // Redirect the page
+        return redirect('admin/orders');
+
     }
 
+    public function show($id) {
+        $order = Order::find($id);
+        return view('admin.orders.details', compact('order'));
+    }
 
 }

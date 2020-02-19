@@ -2,21 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Kaamil's Shop Admin</title>
+    <title>Kaamil Shop Admin</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
-    {{  Html::style('assets/css/bootstrap.min.css') }}
-    {{  Html::style('assets/css/animate.min.css') }}
-    {{  Html::style('assets/css/paper-dashboard.css') }}
-    {{  Html::style('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}
-    {{  Html::style('https://fonts.googleapis.com/css?family=Muli:400,300') }}
-    {{  Html::style('assets/css/themify-icons.css') }}
-    {{  Html::style('assets/css/style.css') }}
+    {{ Html::style('assets/css/bootstrap.min.css') }}
+
+    {{ Html::style('assets/css/animate.min.css') }}
+
+    {{ Html::style('assets/css/paper-dashboard.css') }}
+
+    {{ Html::style('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css') }}
+
+    {{ Html::style('https://fonts.googleapis.com/css?family=Muli:400,300') }}
+
+    {{ Html::style('assets/css/themify-icons.css') }}
+
+    {{ Html::style('assets/css/style.css') }}
 
 
 </head>
@@ -41,12 +46,12 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="ti-settings"></i>
-                                <p>{{ auth()->guard('admin')->check() ? auth()->guard()->user()->name:'Account' }}</p>
+                                <p>{{ auth()->guard('admin')->check() ? auth()->guard()->user()->name : 'Account' }}</p>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Profile</a></li>
-                                <li><a href="{{ url('admin/logout') }}">Logout</a></li>
+                                <li><a href="{{ url('/admin/logout') }}">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -57,7 +62,9 @@
 
         <div class="content">
             <div class="container-fluid">
-@yield('content')
+
+                @yield('content')
+
             </div>
         </div>
         <footer class="footer">
@@ -82,10 +89,10 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="copyright pull-right" id="date">
+                <div class="copyright pull-right">
                     &copy;
                     <script>document.write(new Date().getFullYear())</script>
-                    , Developed by <a href="">Abdullah Kaamil</a>
+                    , made with <i class="fa fa-heart heart"></i> by <a href="https://www.linkedin.com/in/abdullah-kaamil-4986a9ab/">Abdullah Kaamil</a>
                 </div>
             </div>
         </footer>
@@ -94,8 +101,9 @@
 </div>
 
 </body>
-{{Html::script('assets/js/jquery-1.10.2.js')}}
-{{Html::script('assets/js/bootstrap.min.js')}}
-{{Html::script('assets/js/script.js')}}
+
+{{ Html::script('assets/js/jquery-1.10.2.js') }}
+{{ Html::script('assets/js/bootstrap.min.js') }}
+{{ Html::script('assets/js/script.js') }}
 
 </html>

@@ -1,8 +1,11 @@
 @extends('admin.layouts.master')
+
 @section('page')
     Users
-    @endsection
+@endsection
+
 @section('content')
+
     <div class="row">
 
         <div class="col-md-12">
@@ -19,26 +22,28 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Registered at</th>
-
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($users as $user)
-                        <tr>
-                           <td>  {{ $user->id}}</td>
-                            <td>  {{ $user->name}}</td>
-                            <td>  {{ $user->email}}</td>
-                            <td>  {{ $user->created_at->diffForHumans()}}</td>
 
+                            <tr>
 
-                            <td>
-                                <button class="btn btn-sm btn-success ti-close" title="Block User"></button>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->created_at->diffForHumans() }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-success ti-close" title="Block User"></button>
 
-                             {{ link_to_route('users.show', 'Details' , $user->id, ['class'=>'btn btn-success btn-sm']) }}
-                            </td>
-                        </tr>
+                                   {{ link_to_route('users.show', 'Details', $user->id, ['class'=>'btn btn-success btn-sm']) }}
+
+                                </td>
+
+                            </tr>
                         @endforeach
+
                         </tbody>
                     </table>
 
@@ -47,9 +52,4 @@
         </div>
     </div>
 
-
-
-
-
-
-    @endsection
+@endsection

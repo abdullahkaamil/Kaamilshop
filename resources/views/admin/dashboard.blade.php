@@ -1,9 +1,11 @@
 @extends('admin.layouts.master')
+
 @section('page')
     Dashboard
-    @endsection
+@endsection
 
 @section('content')
+
     <div class="row">
         <div class="col-lg-3 col-sm-6">
             <div class="card">
@@ -49,8 +51,7 @@
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <a href="{{ url('admin/products') }}">
-                            <i class="ti-panel"></i> Details</a>
+                            <a href="{{ url('/admin/products') }}"><i class="ti-panel"></i> Details</a>
                         </div>
                     </div>
                 </div>
@@ -75,8 +76,7 @@
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <a href="{{ url('admin/orders') }}">
-                            <i class="ti-panel"></i> Details</a>
+                            <a href="{{ url('/admin/orders') }}"><i class="ti-panel"></i> Orders</a>
                         </div>
                     </div>
                 </div>
@@ -101,13 +101,13 @@
                     <div class="footer">
                         <hr/>
                         <div class="stats">
-                            <a href="{{ url('admin/users') }}">
-                            <i class="ti-panel"></i> Details</a>
+                            <a href="{{ url('/admin/users') }}"><i class="ti-panel"></i> Users</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 @endsection

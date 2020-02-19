@@ -27,24 +27,24 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>{{ $order->id }}</td>
-                            <td>{{ $order->date }}</td>
-                            <td>{{ $order->address }}</td>
-                            <td>
-                                @if ($order->status)
-                                    <span class="label label-success">Confirmed</span>
-                                @else
-                                    <span class="label label-warning">Pending</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($order->status)
+                            <tr>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->date }}</td>
+                                <td>{{ $order->address }}</td>
+                                <td>
+                                    @if ($order->status)
+                                        <span class="label label-success">Confirmed</span>
+                                    @else
+                                        <span class="label label-warning">Pending</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($order->status)
                                     {{ link_to_route('order.pending','Pending', $order->id, ['class'=>'btn btn-warning btn-sm']) }}
                                 @else
                                     {{ link_to_route('order.confirm','Confirm', $order->id, ['class'=>'btn btn-success btn-sm']) }}
                                 @endif  </td>
-                        </tr>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -73,7 +73,7 @@
                         </tr>
                         <tr>
                             <th>Registered At</th>
-                            <td>{{ $order->user->created_at->diffForHumans()}}</td>
+                            <td>{{ $order->user->created_at->diffForHumans() }}</td>
                         </tr>
 
                         </thead>
@@ -130,7 +130,7 @@
                                 @foreach ($order->products as $product)
                                     <table class="table">
                                         <tr>
-                                            <td><img src="{{ url('upload') . '/' . $product->image }}" alt="" style="width: 2em"></td>
+                                            <td><img src="{{ url('uploads') . '/' . $product->image }}" alt="" style="width: 2em"></td>
                                         </tr>
                                     </table>
                                 @endforeach
@@ -145,5 +145,5 @@
     </div>
 
     <a href="{{ url('/admin/orders') }}" class="btn btn-success">Back to Orders</a>
-
+    
 @endsection

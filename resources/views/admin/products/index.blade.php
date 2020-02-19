@@ -1,66 +1,62 @@
 @extends('admin.layouts.master')
+
 @section('page')
-    View Product
+    View Products
 @endsection
+
 @section('content')
+
     <div class="row">
 
         <div class="col-md-12">
 
             @include('admin.layouts.message')
+
             <div class="card">
                 <div class="header">
-                    <h4 class="title">All Products</h4>
-                    <p class="category">List of all stock</p>
+                    <h4 class="title">Products</h4>
+                    <p class="category">List of all products</p>
                 </div>
                 <div class="content table-responsive table-full-width">
-
                     <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Description</th>
+                            <th>Desc</th>
                             <th>Image</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($products as $product)
+                        @foreach ($products as $product)
                             <tr>
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->description }}</td>
-                                <td><img src="{{ url('upload').'/'.$product->image}}" alt="{{$product->image}}"
-                                         class="img-thumbnail"
-                                         style="width: 50px"></td>
+                                <td><img src="{{ url('uploads').'/'. $product->image }}" alt="{{ $product->image }}" style="width:50px;" class="img-thumbnail"></td>
                                 <td>
 
-                                    {{Form::open(['route' => ['products.destroy', $product->id], 'method' =>'DELETE'])  }}
-                                    {{  Form::button('<span class="fa fa-trash"></span>', [ 'type'=> 'submit', 'class'=> ' btn btn-danger btn-sm', 'onclick'=>'return confirm("Are You Sure ?")']) }}
-                                    {{  link_to_route('products.edit','', $product->id, ['class' => 'btn btn-info btn-sm ti-pencil']) }}
-                                    {{  link_to_route('products.show','', $product->id, ['class' => 'btn btn-primary btn-sm ti-list']) }}
+                                    {{ Form::open(['route' => ['products.destroy', $product->id], 'method'=>'DELETE']) }}
+                                        {{ Form::button('<span class="fa fa-trash"></span>', ['type'=>'submit','class'=>'btn btn-danger btn-sm','onclick'=>'return confirm("Are you sure you want to delete this?")'])  }}
+                                        {{ link_to_route('products.edit','', $product->id, ['class' => 'btn btn-info btn-sm ti-pencil']) }}
+                                        {{ link_to_route('products.show','', $product->id, ['class' => 'btn btn-primary btn-sm ti-list']) }}
+                                    {{ Form::close() }}
 
-
-
-                                    {{Form::open()}}
-                                    {{-- <button class="btn btn-sm btn-info ti-pencil-alt" title="Edit"></button>
-                                     <button class="btn btn-sm btn-danger ti-trash" title="Delete"></button>
-                                     <button class="btn btn-sm btn-primary ti-view-list-alt"
-                                             title="Details"></button>--}}
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
 
                 </div>
             </div>
         </div>
-    </div>
 
+
+    </div>
 
 
 @endsection
