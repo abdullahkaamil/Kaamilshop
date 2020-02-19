@@ -1,3 +1,8 @@
+live demo = https://rocky-garden-80101.herokuapp.com
+dashboard = https://rocky-garden-80101.herokuapp.com/admin
+user = akaamil@outlook.com
+password = secert
+
 # Laravel Simple eCommerce app
 
 [![Front view](https://s18.postimg.cc/970pva44p/image.png)](https://postimg.cc/image/72gcu72hx/)
